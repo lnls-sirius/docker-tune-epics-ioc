@@ -1,0 +1,19 @@
+[Unit]
+Description=Noise Source container instance %I
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=2
+EnvironmentFile=/etc/sysconfig/docker-noise-src-epics-ioc
+EnvironmentFile=/etc/sysconfig/docker-noise-src-epics-ioc-mapping
+Environment=IMAGE_VERSION=0.1.0-base-3.15-debian-9
+# Used inside runNoiseSrc script
+Environment=NOISE_SRC_INSTANCE=%i
+ExecStartPre=-/usr/bin/docker pull lnlsdig/noise-src-epics-ioc:${IMAGE_VERSION}
+ExecStart=/usr/local/bin/runNoiseSrc.sh
+ExecStop=/usr/local/bin/stopNoiseSrc.sh
+
+[Install]
+WantedBy=multi-user.target
