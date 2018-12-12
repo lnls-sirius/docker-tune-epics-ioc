@@ -1,8 +1,8 @@
-Docker image to run the Noise Source Soft EPICS IOC
+Docker image to run the Tune Soft EPICS IOC
 ==================================================================
 
 This repository contains the Dockerfile used to create the Docker image to run the
-[Noise Source Soft EPICS IOC](https://github.com/lnls-dig/tune-epics-ioc).
+[Tune Soft EPICS IOC](https://github.com/lnls-dig/tune-epics-ioc).
 
 ## Running the IOC
 
