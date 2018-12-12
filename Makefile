@@ -18,7 +18,7 @@ INIT_SYSTEM := systemd
 
 # Input files
 SRC_DOCKER_FILE = Dockerfile
-SERVICE_NAME = docker-noiseSrc@
+SERVICE_NAME = docker-tune@
 
 # Generated names from Input
 DOCKER_FILES_DEST = ${PREFIX}/etc/${SERVICE_NAME}

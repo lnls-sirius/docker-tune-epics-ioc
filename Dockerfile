@@ -1,16 +1,18 @@
 FROM lnls/epics-dist:base-3.15-debian-9
 
-ENV IOC_REPO noise-src-epics-ioc
-ENV BOOT_DIR iocNoiseSrc
-ENV COMMIT v0.1.0
+ENV IOC_REPO tune-epics-ioc
+ENV BOOT_DIR iocTune
+ENV COMMIT v0.3.0
 
 RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
-    echo 'SUPPORT=/opt/epics/synApps-lnls-R0-0-2/support' >> configure/RELEASE.local && \
+    echo 'SUPPORT=/opt/epics/synApps-lnls-R1-0-0/support' >> configure/RELEASE.local && \
     echo 'AUTOSAVE=$(SUPPORT)/autosave-R5-9' >> configure/RELEASE.local && \
+    echo 'SNCSEQ=$(SUPPORT)/seq-2-2-6' >> configure/RELEASE.local && \
     echo 'CALC=$(SUPPORT)/calc-R3-7' >> configure/RELEASE.local && \
+    echo 'BUSY=$(SUPPORT)/busy-R1-7' >> configure/RELEASE.local && \
     make && \
     make install
 

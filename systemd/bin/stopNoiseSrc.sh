@@ -8,4 +8,4 @@ if [ -z "$NOISE_SRC_INSTANCE" ]; then
 fi
 
 /usr/bin/docker stop \
-    noise-src-epics-ioc-${NOISE_SRC_INSTANCE}
+    tune-epics-ioc-${NOISE_SRC_INSTANCE}
