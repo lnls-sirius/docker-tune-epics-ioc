@@ -1,10 +1,14 @@
-FROM lnls/epics-dist:base-3.15-synapps-lnls-R1-2-1-debian-9.5
+ARG DEBIAN_VERSION
+FROM lnls/epics-synapps:base-3.15-synapps-lnls-R1-2-1-${DEBIAN_VERSION}
 
-ENV IOC_REPO tune-epics-ioc
+ARG COMMIT
+ARG DEBIAN_VERSION
+ARG IOC_GROUP
+ARG IOC_REPO
+
 ENV BOOT_DIR iocTune
-ENV COMMIT v1.6.0-rc5
 
-RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
+RUN git clone https://github.com/${IOC_GROUP}/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
